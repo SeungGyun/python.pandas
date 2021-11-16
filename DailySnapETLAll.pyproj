@@ -1,0 +1,78 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>1807e03d-0c48-44b5-977f-129c1ad0b535</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>DailySnapETLAll.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>SnapShotETL</Name>
+    <RootNamespace>SnapShotETL</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>--gamecode=ENN --location=KOREA --region=KOREA --datatype=OPEN --isthread=N --targetpath=C:/FTC_downloads/KOREA/KOREA --threadcount=4 --date=2021-09-01 --tablelist=kingdom_member_detail_log --stattype=9</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
+    <InterpreterId>Global|PythonCore|3.7</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssignDataServer.py" />
+    <Compile Include="DailyBackup.py" />
+    <Compile Include="DailySnapETLAll.py" />
+    <Compile Include="DailySnapETL.py" />
+    <Compile Include="EtlScriptGenerator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileConvert.py" />
+    <Compile Include="FunctionETL.py" />
+    <Compile Include="modin_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="mysqldump_to_csv.py" />
+    <Compile Include="putil\CsvUtil.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="putil\DataFrameUtil.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="putil\DataBaseUtil.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileDateCheck.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="putil\__init__.py" />
+    <Compile Include="SecondETL.py" />
+    <Compile Include="SumServer.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="putil\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logger.json" />
+    <Content Include="run.sh" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.7" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
